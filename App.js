@@ -1,7 +1,10 @@
 import { SafeAreaView, StatusBar, View } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+
 import Cesta from './src/screens/Cesta/Cesta.js';
 import mock from './src/mocks/cesta';
 import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import { useCallback, useEffect } from 'react';
 
 export default function App() {
   const [fonteCarregada] = useFonts({
@@ -9,12 +12,29 @@ export default function App() {
     MontserratBold: Montserrat_700Bold,
   });
 
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+      } catch (err) {
+        console.warn(err);
+      }
+    }
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fonteCarregada) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fonteCarregada]);
+
   if (!fonteCarregada) {
-    return <View />;
+    return null;
   }
   return (
-    <SafeAreaView>
-      <Cesta {...mock} topo={mock.topo} detalhes={mock.detalhes} />
+    <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <Cesta {...mock} />
       <StatusBar />
     </SafeAreaView>
   );
