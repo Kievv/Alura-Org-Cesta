@@ -16,7 +16,7 @@ export default function Detalhes() {
         Uma cesta com produtos selecionados cuidadosamente da fazenda direto
         para sua cozinha
       </Texto>
-      <Texto style={estilos.preco}>R$ 40,00 </Texto>
+      <Texto style={estilos.preco}>R$ 40,00</Texto>
     </>
   );
 }
