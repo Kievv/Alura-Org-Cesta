@@ -1,16 +1,18 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import Topo from './componentes/Topo.js';
 import Detalhes from './componentes/Detalhes.js';
+import Itens from './componentes/Itens.js';
 
-export default function Cesta() {
+export default function Cesta({ topo, detalhes, itens }) {
   return (
-    <>
-      <Topo />
+    <ScrollView>
+      <Topo {...topo} />
       <View style={estilos.cesta}>
-        <Detalhes />
+        <Detalhes {...detalhes} />
+        <Itens {...itens} />
       </View>
-    </>
+    </ScrollView>
   );
 }
 
