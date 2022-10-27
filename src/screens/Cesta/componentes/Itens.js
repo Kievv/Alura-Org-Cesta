@@ -44,6 +44,6 @@ const estilos = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
     marginLeft: 11,
-    color: '#464646',
+    color: '#464647',
   },
 });
