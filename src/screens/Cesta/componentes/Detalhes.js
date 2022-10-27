@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 import Texto from '../../../components/Texto';
+import Botao from '../../../components/Botao';
 
-export default function Detalhes({ nome, logoFazenda, nomeFazenda, descricao, preco }) {
+export default function Detalhes({ nome, logoFazenda, nomeFazenda, descricao, preco, botaoCompra }) {
   return (
     <>
       <Texto style={estilos.nome}> {nome} </Texto>
@@ -16,6 +17,7 @@ export default function Detalhes({ nome, logoFazenda, nomeFazenda, descricao, pr
       <Texto style={estilos.descricao}>{descricao}</Texto>
 
       <Texto style={estilos.preco}>{preco}</Texto>
+      <Botao texto={botaoCompra} style={estilos.botao} onPress={() => {}}></Botao>
     </>
   );
 }
@@ -51,5 +53,8 @@ const estilos = StyleSheet.create({
     fontSize: 26,
     lineHeight: 42,
     marginTop: 8,
+  },
+  botao: {
+    marginTop: 16,
   },
 });
